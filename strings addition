@@ -1,0 +1,59 @@
+ 
+#include<bits/stdc++.h>
+using namespace std;
+int chartodigit(char ch)
+{
+  return ch-'0';
+}
+char digittochar(int od)
+{
+    return od + '0';
+}
+ int main()
+ {
+     string a;
+     string b;
+     cin>>a>>b;
+     string result=" ";
+     if(a.length()>b.length())
+     {
+         swap(a,b);
+     }
+    reverse(a.begin(),a.end());
+    reverse(b.begin(),b.end());
+   int d1=0;
+   int d2=0;
+    int od;
+    int c=0,sum=0;
+    for(int i=0;i<a.length();i++)
+    {
+     d1=  chartodigit(a[i]);
+    d2=chartodigit(b[i]);
+       sum=d1+d2+c;
+       od=sum%10;
+       c=sum/10;
+       result.push_back(digittochar(od));
+    }
+    
+    for(int i=a.length();i<b.length();i++)
+    {
+        
+        d2=chartodigit(b[i]);
+       sum=d2+c;
+       od=sum%10;
+       c=sum/10;
+       result.push_back(digittochar(od));
+    }
+    if(c)
+    {
+       result.push_back(1); 
+    }
+    
+    reverse(result.begin(),result.end());
+
+    cout<<result<<endl;
+     
+
+
+    return 0;
+}
